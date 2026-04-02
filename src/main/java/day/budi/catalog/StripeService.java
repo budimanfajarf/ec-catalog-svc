@@ -1,5 +1,11 @@
 package day.budi.catalog;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
+
+// should only one implementation of PaymentService, otherwise we need to specify which one to use with @Primary
+@Service
+@Primary
 public class StripeService implements PaymentService {
     @Override
     public void processPayment(String orderId, int amount) {
