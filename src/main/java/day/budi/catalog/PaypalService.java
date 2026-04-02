@@ -2,7 +2,7 @@ package day.budi.catalog;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("paypal")
 public class PaypalService implements PaymentService {
     @Override
     public void processPayment(String orderId, int amount) {

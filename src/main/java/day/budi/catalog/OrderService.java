@@ -1,6 +1,7 @@
 package day.budi.catalog;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,7 +11,7 @@ public class OrderService {
     // Constructor
     // use autowired to inject the dependency if there any other constructor
     // @Autowired
-    public OrderService(PaymentService paymentService) {
+    public OrderService(@Qualifier("paypal") PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 
