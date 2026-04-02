@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import day.budi.catalog.entities.Store;
+
 @SpringBootApplication
 public class CatalogApplication {
 
@@ -19,6 +21,14 @@ public class CatalogApplication {
 		// // Spring IoC Container will manage the dependencies injection for us
 		// var orderService = context.getBean(OrderService.class);
 		// orderService.placeOrder("ORDER123", 100000);
+
+		// var store = Store.builder()
+		// .uuid("STORE123")
+		// .name("My Store")
+		// .address("123 Main St, City, Country")
+		// .build();
+
+		// System.out.println("Store Name: " + store.getName());
 	}
 
 }
