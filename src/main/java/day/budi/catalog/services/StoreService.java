@@ -38,9 +38,36 @@ public class StoreService {
 
     @Transactional
     public void showRelatedEntities() {
-        var store = storeRepository.findById(6L).orElseThrow();
-        for (Product product : store.getProducts()) {
+        var store = Store.builder()
+                .name("Budi's Store")
+                .build();
+
+        var product1 = Product.builder()
+                .name("Product 1")
+                .price(10000)
+                .build();
+
+        var product2 = Product.builder()
+                .name("Product 2")
+                .price(20000)
+                .build();
+
+        store.addProduct(product1);
+        store.addProduct(product2);
+
+        storeRepository.save(store);
+
+        var theStore = storeRepository.findById(6L).orElseThrow();
+        for (Product product : theStore.getProducts()) {
             System.out.println("Product Name: " + product.getName());
         }
+    }
+
+    @Transactional
+    public void deleteRelatedEntities() {
+        var store = storeRepository.findById(30L).orElseThrow();
+        var firstProduct = store.getProducts().getFirst();
+        store.removeProduct(firstProduct);
+        storeRepository.save(store);
     }
 }

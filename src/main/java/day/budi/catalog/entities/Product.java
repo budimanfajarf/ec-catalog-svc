@@ -1,5 +1,9 @@
 package day.budi.catalog.entities;
 
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,8 +19,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @UuidGenerator
     @Column(nullable = false, unique = true)
-    private String uuid;
+    private UUID uuid;
 
     @Column(nullable = false)
     private String name;

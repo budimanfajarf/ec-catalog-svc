@@ -56,9 +56,10 @@ public class CatalogApplication {
 		// .address("123 Main St, City, Country")
 		// .build());
 
-		// var storeService = appContext.getBean(StoreService.class);
+		var storeService = appContext.getBean(StoreService.class);
 		// storeService.showEntityStates();
 		// storeService.showRelatedEntities();
+		storeService.deleteRelatedEntities();
 	}
 
 }
