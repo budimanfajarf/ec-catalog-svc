@@ -4,14 +4,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.UUID;
+
 import day.budi.catalog.entities.Product;
 import day.budi.catalog.entities.Store;
+import day.budi.catalog.repositories.StoreRepository;
 
 @SpringBootApplication
 public class CatalogApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CatalogApplication.class, args);
+		ApplicationContext appContext = SpringApplication.run(CatalogApplication.class, args);
 
 		// // https://youtu.be/gJrjgg1KVL4?si=bwUFK2pv0wRp8WkL
 		// // it's an example of a Open/Closed Principle
@@ -20,7 +23,7 @@ public class CatalogApplication {
 		// orderService.placeOrder("ORDER123", 100000);
 
 		// // Spring IoC Container will manage the dependencies injection for us
-		// var orderService = context.getBean(OrderService.class);
+		// var orderService = appContext.getBean(OrderService.class);
 		// orderService.placeOrder("ORDER123", 100000);
 
 		// var store = Store.builder()
@@ -44,6 +47,13 @@ public class CatalogApplication {
 		// for (Product item : store.getProducts()) {
 		// System.out.println("Product Name: " + item.getName());
 		// }
+
+		// var storeRepository = appContext.getBean(StoreRepository.class);
+		// storeRepository.save(Store.builder()
+		// // .uuid(UUID.fromString("019d5387-b0ee-727c-98aa-31e5cbbdd555"))
+		// .name("My Store")
+		// .address("123 Main St, City, Country")
+		// .build());
 	}
 
 }
