@@ -31,7 +31,7 @@ public class Store {
     @Column(nullable = true, columnDefinition = "TEXT")
     private String address;
 
-    @OneToMany(mappedBy = "store")
+    @OneToMany(mappedBy = "store", fetch = FetchType.LAZY)
     @Builder.Default
     private List<Product> products = new ArrayList<>();
 

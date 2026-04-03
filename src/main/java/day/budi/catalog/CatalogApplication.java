@@ -9,6 +9,7 @@ import java.util.UUID;
 import day.budi.catalog.entities.Product;
 import day.budi.catalog.entities.Store;
 import day.budi.catalog.repositories.StoreRepository;
+import day.budi.catalog.services.StoreService;
 
 @SpringBootApplication
 public class CatalogApplication {
@@ -54,6 +55,10 @@ public class CatalogApplication {
 		// .name("My Store")
 		// .address("123 Main St, City, Country")
 		// .build());
+
+		// var storeService = appContext.getBean(StoreService.class);
+		// storeService.showEntityStates();
+		// storeService.showRelatedEntities();
 	}
 
 }
