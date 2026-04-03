@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import day.budi.catalog.entities.Product;
 import day.budi.catalog.entities.Store;
 
 @SpringBootApplication
@@ -29,6 +30,20 @@ public class CatalogApplication {
 		// .build();
 
 		// System.out.println("Store Name: " + store.getName());
+
+		// var product = Product.builder()
+		// .uuid("PROD123")
+		// .name("Product 1")
+		// .description("This is a sample product.")
+		// .price(100000)
+		// .build();
+
+		// store.addProduct(product);
+		// System.out.println("Store Name: " + store.getName());
+
+		// for (Product item : store.getProducts()) {
+		// System.out.println("Product Name: " + item.getName());
+		// }
 	}
 
 }

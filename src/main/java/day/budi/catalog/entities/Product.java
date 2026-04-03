@@ -26,4 +26,9 @@ public class Product {
 
     @Column(nullable = false)
     private Integer price;
+
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    @ToString.Exclude
+    private Store store;
 }

@@ -1,5 +1,8 @@
 package day.budi.catalog.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +26,20 @@ public class Store {
 
     @Column(nullable = true, columnDefinition = "TEXT")
     private String address;
+
+    @OneToMany(mappedBy = "store")
+    @Builder.Default
+    private List<Product> products = new ArrayList<>();
+
+    public void addProduct(Product product) {
+        products.add(product);
+        product.setStore(this);
+    }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
+        product.setStore(null);
+    }
 
     // Getters and Setters
     // Lombok will generate the getters and setters.
