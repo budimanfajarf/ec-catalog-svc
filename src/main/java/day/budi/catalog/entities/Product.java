@@ -1,7 +1,9 @@
 package day.budi.catalog.entities;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.*;
@@ -14,6 +16,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "products")
+@SQLRestriction("deleted_at IS NULL")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +39,10 @@ public class Product {
     @JoinColumn(name = "store_id")
     @ToString.Exclude
     private Store store;
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 }

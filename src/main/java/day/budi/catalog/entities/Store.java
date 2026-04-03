@@ -1,9 +1,11 @@
 package day.budi.catalog.entities;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.*;
@@ -16,6 +18,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table(name = "stores")
+@SQLRestriction("deleted_at IS NULL")
 public class Store {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +37,12 @@ public class Store {
     @OneToMany(mappedBy = "store", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, orphanRemoval = true)
     @Builder.Default
     private List<Product> products = new ArrayList<>();
+
+    @Column(name = "created_at", insertable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
 
     public void addProduct(Product product) {
         products.add(product);
